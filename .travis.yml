@@ -1,0 +1,12 @@
+language: objective-c
+
+branches:
+only:
+- master
+
+xcode_project: Netstring.xcodeproj
+xcode_scheme: Netstring
+osx_image: xcode8
+
+script:
+- xcodebuild clean build test -project Netstring.xcodeproj -scheme Netstring
