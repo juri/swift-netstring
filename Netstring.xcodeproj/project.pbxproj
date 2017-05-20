@@ -40,6 +40,7 @@
 		CB389A611ED04FCE000078DD /* IntegerASCIIConversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegerASCIIConversion.swift; sourceTree = "<group>"; };
 		CB3D3C9A1ED067500094C60C /* IntegerASCIIConversionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegerASCIIConversionTests.swift; sourceTree = "<group>"; };
 		CB3D3C9D1ED099990094C60C /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		CB3D3C9E1ED09A090094C60C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CBDC2DDA1EC6160F00707C8B /* Netstring.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Netstring.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBDC2DDD1EC6160F00707C8B /* Netstring.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Netstring.h; sourceTree = "<group>"; };
 		CBDC2DDE1EC6160F00707C8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -71,6 +72,7 @@
 		CBDC2DD01EC6160F00707C8B = {
 			isa = PBXGroup;
 			children = (
+				CB3D3C9E1ED09A090094C60C /* README.md */,
 				CB3D3C9D1ED099990094C60C /* LICENSE */,
 				CBDC2DDC1EC6160F00707C8B /* Netstring */,
 				CBDC2DE71EC6160F00707C8B /* NetstringTests */,
