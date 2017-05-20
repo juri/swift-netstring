@@ -10,11 +10,13 @@
 		CB389A311ECB5D77000078DD /* ParseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB389A301ECB5D77000078DD /* ParseTests.swift */; };
 		CB389A331ECDF9D1000078DD /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB389A321ECDF9D1000078DD /* TestHelpers.swift */; };
 		CB389A5D1ECE0008000078DD /* ExportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB389A5C1ECE0008000078DD /* ExportTests.swift */; };
+		CB389A5F1ED04BE3000078DD /* ArrayReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB389A5E1ED04BE3000078DD /* ArrayReader.swift */; };
+		CB389A601ED04DB9000078DD /* ArrayReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB389A5E1ED04BE3000078DD /* ArrayReader.swift */; };
 		CBDC2DE41EC6160F00707C8B /* Netstring.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBDC2DDA1EC6160F00707C8B /* Netstring.framework */; };
 		CBDC2DEB1EC6160F00707C8B /* Netstring.h in Headers */ = {isa = PBXBuildFile; fileRef = CBDC2DDD1EC6160F00707C8B /* Netstring.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CBDC2DF51EC6164B00707C8B /* Netstring.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDC2DF41EC6164B00707C8B /* Netstring.swift */; };
 		CBDC2DF61EC75B2400707C8B /* Netstring.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDC2DF41EC6164B00707C8B /* Netstring.swift */; };
-		CBDC2DF81EC83EDA00707C8B /* ArrayReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDC2DF71EC83EDA00707C8B /* ArrayReader.swift */; };
+		CBDC2DF81EC83EDA00707C8B /* ArrayReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDC2DF71EC83EDA00707C8B /* ArrayReaderTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,13 +33,14 @@
 		CB389A301ECB5D77000078DD /* ParseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseTests.swift; sourceTree = "<group>"; };
 		CB389A321ECDF9D1000078DD /* TestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		CB389A5C1ECE0008000078DD /* ExportTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportTests.swift; sourceTree = "<group>"; };
+		CB389A5E1ED04BE3000078DD /* ArrayReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayReader.swift; sourceTree = "<group>"; };
 		CBDC2DDA1EC6160F00707C8B /* Netstring.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Netstring.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBDC2DDD1EC6160F00707C8B /* Netstring.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Netstring.h; sourceTree = "<group>"; };
 		CBDC2DDE1EC6160F00707C8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBDC2DE31EC6160F00707C8B /* NetstringTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetstringTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBDC2DEA1EC6160F00707C8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBDC2DF41EC6164B00707C8B /* Netstring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Netstring.swift; sourceTree = "<group>"; };
-		CBDC2DF71EC83EDA00707C8B /* ArrayReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayReader.swift; sourceTree = "<group>"; };
+		CBDC2DF71EC83EDA00707C8B /* ArrayReaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayReaderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +86,7 @@
 				CBDC2DDD1EC6160F00707C8B /* Netstring.h */,
 				CBDC2DDE1EC6160F00707C8B /* Info.plist */,
 				CBDC2DF41EC6164B00707C8B /* Netstring.swift */,
+				CB389A5E1ED04BE3000078DD /* ArrayReader.swift */,
 			);
 			path = Netstring;
 			sourceTree = "<group>";
@@ -91,7 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				CBDC2DEA1EC6160F00707C8B /* Info.plist */,
-				CBDC2DF71EC83EDA00707C8B /* ArrayReader.swift */,
+				CBDC2DF71EC83EDA00707C8B /* ArrayReaderTests.swift */,
 				CB389A301ECB5D77000078DD /* ParseTests.swift */,
 				CB389A321ECDF9D1000078DD /* TestHelpers.swift */,
 				CB389A5C1ECE0008000078DD /* ExportTests.swift */,
@@ -210,6 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB389A5F1ED04BE3000078DD /* ArrayReader.swift in Sources */,
 				CBDC2DF51EC6164B00707C8B /* Netstring.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,9 +223,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB389A601ED04DB9000078DD /* ArrayReader.swift in Sources */,
 				CB389A311ECB5D77000078DD /* ParseTests.swift in Sources */,
 				CB389A331ECDF9D1000078DD /* TestHelpers.swift in Sources */,
-				CBDC2DF81EC83EDA00707C8B /* ArrayReader.swift in Sources */,
+				CBDC2DF81EC83EDA00707C8B /* ArrayReaderTests.swift in Sources */,
 				CBDC2DF61EC75B2400707C8B /* Netstring.swift in Sources */,
 				CB389A5D1ECE0008000078DD /* ExportTests.swift in Sources */,
 			);

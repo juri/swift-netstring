@@ -1,5 +1,5 @@
 //
-//  ArrayReader.swift
+//  ArrayReaderTests.swift
 //  Netstring
 //
 //  Created by Juri Pakaste on 14/05/2017.
@@ -8,23 +8,6 @@
 
 import Foundation
 import XCTest
-
-class ArrayReader {
-    private let array: [UInt8]
-    private var position: Int
-
-    init(array: [UInt8]) {
-        self.array = array
-        self.position = 0
-    }
-
-    func read(_ n: Int) -> [UInt8] {
-        let size = max(min(n, self.array.count-self.position), 0)
-        let result = Array(self.array[self.position ..< self.position + size])
-        self.position += size
-        return result
-    }
-}
 
 class ArrayReaderTests: XCTestCase {
     func testEmpty_read_zero_should_return_empty() {

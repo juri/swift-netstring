@@ -10,44 +10,37 @@ import XCTest
 
 class ParseTests: XCTestCase {
     func testValidEmpty() throws {
-        let ar = ArrayReader(array: "0:,".byteArray)
-        let ns = try AssertNotNilAndUnwrap(Netstring(reader: ar.read))
+        let ns = try AssertNotNilAndUnwrap(Netstring(array: "0:,".byteArray))
         XCTAssertEqual(ns.payload, [])
     }
 
     func testSuccessfulRead() throws {
-        let ar = ArrayReader(array: "3:abc,".byteArray)
-        let ns = try AssertNotNilAndUnwrap(Netstring(reader: ar.read))
+        let ns = try AssertNotNilAndUnwrap(Netstring(array: "3:abc,".byteArray))
         XCTAssertEqual(ns.payload, "abc".byteArray)
     }
 
     func testOnlyNumber() {
-        let ar = ArrayReader(array: "4".byteArray)
-        let ns = Netstring(reader: ar.read)
+        let ns = Netstring(array: "4".byteArray)
         XCTAssertNil(ns)
     }
 
     func testNumberColon() {
-        let ar = ArrayReader(array: "2:".byteArray)
-        let ns = Netstring(reader: ar.read)
+        let ns = Netstring(array: "2:".byteArray)
         XCTAssertNil(ns)
     }
 
     func testMissingColon() {
-        let ar = ArrayReader(array: "1a".byteArray)
-        let ns = Netstring(reader: ar.read)
+        let ns = Netstring(array: "1a".byteArray)
         XCTAssertNil(ns)
     }
 
     func testEndBeforeComma() {
-        let ar = ArrayReader(array: "1:a".byteArray)
-        let ns = Netstring(reader: ar.read)
+        let ns = Netstring(array: "1:a".byteArray)
         XCTAssertNil(ns)
     }
 
     func testMissingComma() {
-        let ar = ArrayReader(array: "1:ab".byteArray)
-        let ns = Netstring(reader: ar.read)
+        let ns = Netstring(array: "1:ab".byteArray)
         XCTAssertNil(ns)
     }
 

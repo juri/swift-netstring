@@ -49,6 +49,10 @@ public struct Netstring {
         self.payload = data
     }
 
+    init?(array: [UInt8]) {
+        self.init(reader: ArrayReader(array: array).read)
+    }
+
     func export() throws -> Bytes {
         let length = self.payload.count
         guard let lengthString = formatter.string(from: length as NSNumber),
