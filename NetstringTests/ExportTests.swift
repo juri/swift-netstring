@@ -12,16 +12,16 @@ import XCTest
 class ExportTests: XCTestCase {
     func testExportEmpty() throws {
         let ns = Netstring(payload: [])
-        XCTAssertEqual(try ns.export(), "0:,".byteArray)
+        XCTAssertEqual(ns.export(), "0:,".byteArray)
     }
 
     func testExportOne() throws {
         let ns = Netstring(payload: ["A"].byteArray)
-        XCTAssertEqual(try ns.export(), "1:A,".byteArray)
+        XCTAssertEqual(ns.export(), "1:A,".byteArray)
     }
 
     func testExportMore() throws {
         let ns = Netstring(payload: "Orange Menace".characters.byteArray)
-        XCTAssertEqual(try ns.export(), "13:Orange Menace,".byteArray)
+        XCTAssertEqual(ns.export(), "13:Orange Menace,".byteArray)
     }
 }

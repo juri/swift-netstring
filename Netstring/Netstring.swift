@@ -8,17 +8,14 @@
 
 import Foundation
 
-private let colon: UInt8 = 0x3a
-private let comma: UInt8 = 0x2c
-private let zero: UInt8 = 0x30
-private let nine: UInt8 = zero + 9
+let colon: UInt8 = 0x3a
+let comma: UInt8 = 0x2c
+let zero: UInt8 = 0x30
+let nine: UInt8 = zero + 9
+
 private let maxLengthLength = 9
 
 public struct Netstring {
-    public enum Failure: Error {
-        case formattingError
-    }
-
     typealias Bytes = [UInt8]
     typealias Reader = (Int) -> Bytes
 
@@ -37,10 +34,9 @@ public struct Netstring {
         }
         guard next.count == 1, next.first == colon else { return nil }
         guard lengthBytes.count > 0,
-            let lengthString = String(bytes: lengthBytes, encoding: .ascii),
-            let length = formatter.number(from: lengthString) as? Int
-            else {
-                return nil
+              let length = IntegerASCIIConversion.number(from: lengthBytes)
+        else {
+            return nil
         }
         let data = reader(length)
         guard data.count == length else { return nil }
@@ -53,27 +49,14 @@ public struct Netstring {
         self.init(reader: ArrayReader(array: array).read)
     }
 
-    func export() throws -> Bytes {
+    func export() -> Bytes {
         let length = self.payload.count
-        guard let lengthString = formatter.string(from: length as NSNumber),
-              let lengthData = lengthString.data(using: .ascii)
-        else {
-            throw Failure.formattingError
-        }
+        let lengthBytes = IntegerASCIIConversion.asciiArray(from: length)
         var output: Bytes = []
-        output.append(contentsOf: lengthData)
+        output.append(contentsOf: lengthBytes)
         output.append(colon)
         output.append(contentsOf: self.payload)
         output.append(comma)
         return output
     }
 }
-
-
-private let formatter: NumberFormatter = {
-    let nf = NumberFormatter()
-    nf.minimumIntegerDigits = 1
-    nf.maximumFractionDigits = 0
-    nf.locale = Locale(identifier: "en_US_POSIX")
-    return nf
-}()
