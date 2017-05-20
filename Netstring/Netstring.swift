@@ -3,7 +3,7 @@
 //  Netstring
 //
 //  Created by Juri Pakaste on 12/05/2017.
-//  Copyright © 2017 Juri Pakaste. All rights reserved.
+//  Copyright © 2017 Juri Pakaste. See LICENSE for licensing info.
 //
 
 import Foundation
