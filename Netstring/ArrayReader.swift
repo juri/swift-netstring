@@ -8,6 +8,8 @@
 
 import Foundation
 
+/// ArrayReader is a wrapper for a byte array whose `read(_:)` method can be used as `Netstring.Reader`.
+/// - SeeAlso: `Netstring.Reader`
 public class ArrayReader {
     private let array: [UInt8]
     private var position: Int
