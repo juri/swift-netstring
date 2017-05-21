@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Netstring Struct Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Struct/Netstring" class="dashAnchor"></a>
+    <a title="Netstring Struct Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (88% documented)</p>
+        <p class="header-right"><a href="https://github.com/juri/swift-netstring"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Netstring Struct Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/ArrayReader.html">ArrayReader</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/Netstring.html">Netstring</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Netstring/ParseResult.html">– ParseResult</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Netstring</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Netstring</span></code></pre>
+
+                </div>
+              </div>
+            <p><code>Netstring</code> reads and writes <a href="https://cr.yp.to/proto/netstrings.txt">netstrings</a>.
+A netstring is a self-delimiting encoding of a string of bytes that declares
+its length at its beginning.</p>
+
+<p>The predeclared length makes it easy to limit the the size of accepted data
+and to find the end of message without imposing escaping on the sender.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:OV9Netstring9Netstring11ParseResult"></a>
+                    <a name="//apple_ref/swift/Enum/ParseResult" class="dashAnchor"></a>
+                    <a class="token" href="#/s:OV9Netstring9Netstring11ParseResult">ParseResult</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Result of parsing.</p>
+
+                        <a href="../Structs/Netstring/ParseResult.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ParseResult</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:V9Netstring9Netstring6Reader"></a>
+                    <a name="//apple_ref/swift/Alias/Reader" class="dashAnchor"></a>
+                    <a class="token" href="#/s:V9Netstring9Netstring6Reader">Reader</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A <code>Reader</code> should return as many bytes as specified in the parameter, or less
+if end of stream has been reached.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">Reader</span> <span class="o">=</span> <span class="p">(</span><span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bytes</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV9Netstring9Netstring7payloadGSaVs5UInt8_"></a>
+                    <a name="//apple_ref/swift/Property/payload" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV9Netstring9Netstring7payloadGSaVs5UInt8_">payload</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The undecorated (no length, no delimiters) content of the netstring.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">payload</span><span class="p">:</span> <span class="kt">Bytes</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV9Netstring9NetstringcFT7payloadGSaVs5UInt8__S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(payload:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV9Netstring9NetstringcFT7payloadGSaVs5UInt8__S0_">init(payload:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initialize Netstring with the given bytes. This initializer doesn&rsquo;t parse the content.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">payload</span><span class="p">:</span> <span class="kt">Bytes</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZFV9Netstring9Netstring5parseFT6readerFSiGSaVs5UInt8_9maxLengthGSqSi_11skipTooLongSb_OS0_11ParseResult"></a>
+                    <a name="//apple_ref/swift/Method/parse(reader:maxLength:skipTooLong:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZFV9Netstring9Netstring5parseFT6readerFSiGSaVs5UInt8_9maxLengthGSqSi_11skipTooLongSb_OS0_11ParseResult">parse(reader:maxLength:skipTooLong:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Parse a netstring from <code>reader</code>.</p>
+
+<p>This function will read as little data from <code>reader</code> as possible. The read position after
+this function can be determined based on the return value.</p>
+
+<p>If the return value is <code>success</code>, the reader will be left at the position after the final comma.</p>
+
+<p>If the return value is <code>rejected</code>, the position depends on the value of <code>skipTooLong</code>:</p>
+
+<ul>
+<li><code>true</code>: the reader will be left at the position after the final comma.</li>
+<li><code>false</code>: the reader will be left at the position after the colon.</li>
+</ul>
+
+<p>If the return value is <code>failure</code>, the position is undefined.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>a nil value for <code>maxLength</code> means unbounded memory usage if you don&rsquo;t control the data source
+       for <code>reader</code>.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">parse</span><span class="p">(</span><span class="nv">reader</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">((</span><span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bytes</span><span class="p">),</span> <span class="nv">maxLength</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="mi">10240</span><span class="p">,</span> <span class="nv">skipTooLong</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/Netstring/ParseResult.html">ParseResult</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>reader</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Source of data.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>maxLength</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Maximum length of netstring to accept. If nil, Netstring will attempt to
+                   read all the data.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>skipTooLong</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Read in chunks and discard the input netstring if it&rsquo;s too long.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>ParseResult</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZFV9Netstring9Netstring5parseFT5arrayGSaVs5UInt8__OS0_11ParseResult"></a>
+                    <a name="//apple_ref/swift/Method/parse(array:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZFV9Netstring9Netstring5parseFT5arrayGSaVs5UInt8__OS0_11ParseResult">parse(array:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Parse a netstring from <code>array</code>.</p>
+
+<p>This is a convenience function that creates an <code><a href="../Classes/ArrayReader.html">ArrayReader</a></code> for <code>array</code> and calls 
+<code><a href="../Structs/Netstring.html#/s:ZFV9Netstring9Netstring5parseFT6readerFSiGSaVs5UInt8_9maxLengthGSqSi_11skipTooLongSb_OS0_11ParseResult">parse(reader:maxLength:skipTooLong:)</a></code>.</p>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <code><a href="../Classes/ArrayReader.html">ArrayReader</a></code>
+
+</div>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <code><a href="../Structs/Netstring.html#/s:ZFV9Netstring9Netstring5parseFT6readerFSiGSaVs5UInt8_9maxLengthGSqSi_11skipTooLongSb_OS0_11ParseResult">parse(reader:maxLength:skipTooLong:)</a></code>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">parse</span><span class="p">(</span><span class="nv">array</span><span class="p">:</span> <span class="p">[</span><span class="kt">UInt8</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/Netstring/ParseResult.html">ParseResult</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV9Netstring9Netstring6exportFT_GSaVs5UInt8_"></a>
+                    <a name="//apple_ref/swift/Method/export()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV9Netstring9Netstring6exportFT_GSaVs5UInt8_">export()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a netstring based on <code><a href="../Structs/Netstring.html#/s:vV9Netstring9Netstring7payloadGSaVs5UInt8_">payload</a></code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">export</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bytes</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZFPs9Equatableoi2eeFTxx_Sb"></a>
+                    <a name="//apple_ref/swift/Method/==(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZFPs9Equatableoi2eeFTxx_Sb">==(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="o">==</span><span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="kt">Netstring</span><span class="p">,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="kt">Netstring</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>lhs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>rhs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="https://twitter.com/juripakaste" target="_blank" rel="external">Juri Pakaste</a>. All rights reserved. (Last updated: 2017-05-21)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

@@ -1,0 +1,19 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/juri/Projects/swift-netstring/swift-netstring/Netstring/ArrayReader.swift",
+      "line": 17,
+      "symbol": "ArrayReader.init(array:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juri/Projects/swift-netstring/swift-netstring/Netstring/ArrayReader.swift",
+      "line": 22,
+      "symbol": "ArrayReader.read(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/juri/Projects/swift-netstring/swift-netstring"
+}
