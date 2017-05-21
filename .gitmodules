@@ -1,0 +1,3 @@
+[submodule "swift-netstring"]
+	path = swift-netstring
+	url = git@github.com:juri/swift-netstring.git
