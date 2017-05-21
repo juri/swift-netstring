@@ -12,12 +12,12 @@ public class ArrayReader {
     private let array: [UInt8]
     private var position: Int
 
-    init(array: [UInt8]) {
+    public init(array: [UInt8]) {
         self.array = array
         self.position = 0
     }
 
-    func read(_ n: Int) -> [UInt8] {
+    public func read(_ n: Int) -> [UInt8] {
         let size = max(min(n, self.array.count-self.position), 0)
         let result = Array(self.array[self.position ..< self.position + size])
         self.position += size

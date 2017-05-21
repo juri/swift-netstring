@@ -16,16 +16,16 @@ let nine: UInt8 = zero + 9
 private let maxLengthLength = 9
 
 public struct Netstring {
-    typealias Bytes = [UInt8]
-    typealias Reader = (Int) -> Bytes
+    public typealias Bytes = [UInt8]
+    public typealias Reader = (Int) -> Bytes
 
-    let payload: Bytes
+    public let payload: Bytes
 
-    init(payload: Bytes) {
+    public init(payload: Bytes) {
         self.payload = payload
     }
 
-    init?(reader: @escaping (Int) -> Bytes) {
+    public init?(reader: @escaping (Int) -> Bytes) {
         var next: [UInt8] = reader(1)
         var lengthBytes: [UInt8] = []
         while next.count == 1 && next[0] >= zero && next[0] <= nine {
@@ -45,11 +45,11 @@ public struct Netstring {
         self.payload = data
     }
 
-    init?(array: [UInt8]) {
+    public init?(array: [UInt8]) {
         self.init(reader: ArrayReader(array: array).read)
     }
 
-    func export() -> Bytes {
+    public func export() -> Bytes {
         let length = self.payload.count
         let lengthBytes = IntegerASCIIConversion.asciiArray(from: length)
         var output: Bytes = []
