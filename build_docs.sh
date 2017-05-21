@@ -6,6 +6,7 @@ cd swift-netstring
 
 jazzy --swift-version 3.1 -o .. \
       --readme README.md \
+      -m 'Netstring' \
       -a 'Juri Pakaste' \
       -u 'https://twitter.com/juripakaste' \
       -g 'https://github.com/juri/swift-netstring'
