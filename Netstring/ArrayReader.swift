@@ -14,11 +14,13 @@ public class ArrayReader {
     private let array: [UInt8]
     private var position: Int
 
+    /// Initialize `ArrayReader` with a byte array.
     public init(array: [UInt8]) {
         self.array = array
         self.position = 0
     }
 
+    /// Reader function for `Netstring` parser.
     public func read(_ n: Int) -> [UInt8] {
         let size = max(min(n, self.array.count-self.position), 0)
         let result = Array(self.array[self.position ..< self.position + size])
