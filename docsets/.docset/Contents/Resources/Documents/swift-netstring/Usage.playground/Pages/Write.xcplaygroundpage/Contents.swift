@@ -1,9 +1,0 @@
-
-import Foundation
-import Netstring
-
-// Create a new netstring from an array of bytes, export with length
-// and delimiters.
-let ns = Netstring(payload: [0x4f, 0x72, 0x61, 0x6e, 0x67, 0x65, 0x20, 0x4d, 0x65, 0x6e, 0x61, 0x63, 0x65])
-let bytes = ns.export()
-
