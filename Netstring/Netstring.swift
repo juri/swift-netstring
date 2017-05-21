@@ -68,7 +68,7 @@ public struct Netstring {
     ///            for `reader`.
     ///
     /// - Returns: ParseResult
-    public static func parse(reader: @escaping ((Int) -> Bytes), maxLength: Int? = nil, skipTooLong: Bool = true) -> ParseResult {
+    public static func parse(reader: @escaping ((Int) -> Bytes), maxLength: Int? = 10240, skipTooLong: Bool = true) -> ParseResult {
         var next: [UInt8] = reader(1)
         var lengthBytes: [UInt8] = []
         while next.count == 1 && next[0] >= zero && next[0] <= nine {
@@ -104,7 +104,7 @@ public struct Netstring {
     /// - SeeAlso: `ArrayReader`
     /// - SeeAlso: `parse(reader:maxLength:skipTooLong:)`
     public static func parse(array: [UInt8]) -> ParseResult {
-        return parse(reader: ArrayReader(array: array).read)
+        return parse(reader: ArrayReader(array: array).read, maxLength: nil)
     }
 
     /// Create a netstring based on `payload`.
