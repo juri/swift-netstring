@@ -25,4 +25,4 @@ if case let .success(ns) = Netstring.parse(array: data) {
 
 The array-based constructor delegates to a closure-based one. It takes in a closure of type `(Int) -> [UInt8]` that `Netstring` asks to provide bytes as necessary. You can use it to read input from a stream (socket, pipe, file etc.)
 
-See also `Usage.playground` and `NetstringTests`.
+See also [the reference documentation](https://juri.github.io/swift-netstring/), `Usage.playground` and `NetstringTests`.
