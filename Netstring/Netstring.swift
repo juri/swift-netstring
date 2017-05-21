@@ -22,6 +22,12 @@ private let maxLengthLength = 9
 /// The predeclared length makes it easy to limit the the size of accepted data
 /// and to find the end of message without imposing escaping on the sender.
 public struct Netstring {
+    public enum ParseResult {
+        case success(Netstring)
+        case failure
+        case rejected(length: Int)
+    }
+
     public typealias Bytes = [UInt8]
     public typealias Reader = (Int) -> Bytes
 
@@ -31,28 +37,33 @@ public struct Netstring {
         self.payload = payload
     }
 
-    public init?(reader: @escaping (Int) -> Bytes) {
+    public static func parse(reader: @escaping ((Int) -> Bytes), maxLength: Int? = nil) -> ParseResult {
         var next: [UInt8] = reader(1)
         var lengthBytes: [UInt8] = []
         while next.count == 1 && next[0] >= zero && next[0] <= nine {
             lengthBytes.append(next[0])
             next = reader(1)
         }
-        guard next.count == 1, next.first == colon else { return nil }
+        guard next.count == 1, next.first == colon else { return .failure }
         guard lengthBytes.count > 0,
-              let length = IntegerASCIIConversion.number(from: lengthBytes)
-        else {
-            return nil
+            let length = IntegerASCIIConversion.number(from: lengthBytes)
+            else {
+                return .failure
+        }
+        if let maxLength = maxLength {
+            guard maxLength >= length else {
+                return .rejected(length: length)
+            }
         }
         let data = reader(length)
-        guard data.count == length else { return nil }
+        guard data.count == length else { return .failure }
         let endDelimiter = reader(1)
-        guard endDelimiter.count == 1, endDelimiter.first == comma else { return nil }
-        self.payload = data
+        guard endDelimiter.count == 1, endDelimiter.first == comma else { return .failure }
+        return .success(Netstring(payload: data))
     }
 
-    public init?(array: [UInt8]) {
-        self.init(reader: ArrayReader(array: array).read)
+    public static func parse(array: [UInt8]) -> ParseResult {
+        return parse(reader: ArrayReader(array: array).read)
     }
 
     public func export() -> Bytes {
@@ -64,5 +75,24 @@ public struct Netstring {
         output.append(contentsOf: self.payload)
         output.append(comma)
         return output
+    }
+}
+
+extension Netstring: Equatable {
+    public static func ==(lhs: Netstring, rhs: Netstring) -> Bool {
+        return lhs.payload == rhs.payload
+    }
+}
+
+extension Netstring.ParseResult: Equatable {
+    public static func ==(lhs: Netstring.ParseResult, rhs: Netstring.ParseResult) -> Bool {
+        switch (lhs, rhs) {
+        case (.success(let lv), .success(let rv)): return lv == rv
+        case (.failure, .failure): return true
+        case (.rejected(let lv), .rejected(let rv)): return lv == rv
+        case (.success, _),
+             (.failure, _),
+             (.rejected, _): return false
+        }
     }
 }

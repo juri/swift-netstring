@@ -3,7 +3,7 @@ import Netstring
 
 // Read data from an array, extract result.
 let data: [UInt8] = [0x34, 0x3a, 0x73, 0x77, 0x61, 0x67, 0x2c]
-if let ns = Netstring(array: data) {
+if case let .success(ns) = Netstring.parse(array: data) {
     let payload = ns.payload
 }
 
@@ -19,7 +19,8 @@ func fileReader(handle: FileHandle) -> Netstring.Reader {
     }
 }
 
-if let ns2 = Netstring(reader: fileReader(handle: fh)),
+let result = Netstring.parse(reader: fileReader(handle: fh))
+if case let .success(ns2) = result,
    let json = try? JSONSerialization.jsonObject(with: Data(bytes: ns2.payload), options: [])
 {
     let dict = json as! [String: String]

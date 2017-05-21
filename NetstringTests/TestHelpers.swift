@@ -29,3 +29,19 @@ extension String {
         return self.characters.byteArray
     }
 }
+
+// Result handling
+
+struct BadResultError: Error {
+    let result: Netstring.ParseResult
+}
+
+extension Netstring.ParseResult {
+    func successValue(file: StaticString = #file, line: UInt = #line) throws -> Netstring {
+        guard case let .success(ns) = self else {
+            XCTFail("Expected success result, got \(self)", file: file, line: line)
+            throw BadResultError(result: self)
+        }
+        return ns
+    }
+}

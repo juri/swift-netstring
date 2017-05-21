@@ -10,50 +10,54 @@ import XCTest
 
 class ParseTests: XCTestCase {
     func testValidEmpty() throws {
-        let ns = try AssertNotNilAndUnwrap(Netstring(array: "0:,".byteArray))
+        let result = Netstring.parse(array: "0:,".byteArray)
+        let ns = try result.successValue()
         XCTAssertEqual(ns.payload, [])
     }
 
     func testSuccessfulRead() throws {
-        let ns = try AssertNotNilAndUnwrap(Netstring(array: "3:abc,".byteArray))
+        let result = Netstring.parse(array: "3:abc,".byteArray)
+        let ns = try result.successValue()
         XCTAssertEqual(ns.payload, "abc".byteArray)
     }
 
     func testOnlyNumber() {
-        let ns = Netstring(array: "4".byteArray)
-        XCTAssertNil(ns)
+        let result = Netstring.parse(array: "4".byteArray)
+        XCTAssertEqual(result, .failure)
     }
 
     func testNumberColon() {
-        let ns = Netstring(array: "2:".byteArray)
-        XCTAssertNil(ns)
+        let result = Netstring.parse(array: "2:".byteArray)
+        XCTAssertEqual(result, .failure)
     }
 
     func testMissingColon() {
-        let ns = Netstring(array: "1a".byteArray)
-        XCTAssertNil(ns)
+        let result = Netstring.parse(array: "1a".byteArray)
+        XCTAssertEqual(result, .failure)
     }
 
     func testEndBeforeComma() {
-        let ns = Netstring(array: "1:a".byteArray)
-        XCTAssertNil(ns)
+        let result = Netstring.parse(array: "1:a".byteArray)
+        XCTAssertEqual(result, .failure)
     }
 
     func testMissingComma() {
-        let ns = Netstring(array: "1:ab".byteArray)
-        XCTAssertNil(ns)
+        let result = Netstring.parse(array: "1:ab".byteArray)
+        XCTAssertEqual(result, .failure)
     }
 
     func testNoExtraRead_with_zero() throws {
         let ar = ArrayReader(array: "0:,Z".byteArray)
-        let ns = try AssertNotNilAndUnwrap(Netstring(reader: ar.read))
+        let result = Netstring.parse(reader: ar.read)
+        let ns = try result.successValue()
         XCTAssertEqual(ns.payload, [])
         XCTAssertEqual(ar.read(10), "Z".byteArray)
     }
 
     func testNoExtraRead_with_nonzero() throws {
         let ar = ArrayReader(array: "11:Hello world,Z".byteArray)
-        let ns = try AssertNotNilAndUnwrap(Netstring(reader: ar.read))
+        let result = Netstring.parse(reader: ar.read)
+        let ns = try result.successValue()
         XCTAssertEqual(ns.payload, "Hello world".byteArray)
         XCTAssertEqual(ar.read(10), "Z".byteArray)
     }
