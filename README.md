@@ -1,6 +1,7 @@
 # Netstrings in Swift
 
 [![Build Status](https://travis-ci.org/juri/swift-netstring.svg?branch=master)](https://travis-ci.org/juri/swift-netstring)
+[![Documentation Status](https://juri.github.io/swift-netstring/badge.svg)](https://juri.github.io/swift-netstring/)
 
 Implements [netstrings](https://cr.yp.to/proto/netstrings.txt) in Swift 3.1.
 
