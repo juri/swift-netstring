@@ -1,7 +1,7 @@
 **/xcuserdata
 build
 docs
+docsets
 
 # Submodule used by gh-pages branch
-
 swift-netstring
