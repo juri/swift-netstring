@@ -37,7 +37,7 @@ public struct Netstring {
         self.payload = payload
     }
 
-    public static func parse(reader: @escaping ((Int) -> Bytes), maxLength: Int? = nil) -> ParseResult {
+    public static func parse(reader: @escaping ((Int) -> Bytes), maxLength: Int? = nil, skipTooLong: Bool = true) -> ParseResult {
         var next: [UInt8] = reader(1)
         var lengthBytes: [UInt8] = []
         while next.count == 1 && next[0] >= zero && next[0] <= nine {
@@ -52,6 +52,9 @@ public struct Netstring {
         }
         if let maxLength = maxLength {
             guard maxLength >= length else {
+                if skipTooLong && !skip(length: length, reader: reader) {
+                    return .failure
+                }
                 return .rejected(length: length)
             }
         }
@@ -75,6 +78,21 @@ public struct Netstring {
         output.append(contentsOf: self.payload)
         output.append(comma)
         return output
+    }
+
+    private static func skip(length: Int, reader: ((Int) -> Bytes)) -> Bool {
+        var i = 0
+        while i < length {
+            let chunkSize = min(length - i, 1024)
+            let chunk = reader(chunkSize)
+            if chunk.count < chunkSize {
+                return false
+            }
+            i += chunkSize
+        }
+        let endDelimiter = reader(1)
+        guard endDelimiter.count == 1, endDelimiter.first == comma else { return false }
+        return true
     }
 }
 
