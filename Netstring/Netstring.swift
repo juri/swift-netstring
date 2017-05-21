@@ -13,7 +13,8 @@ let comma: UInt8 = 0x2c
 let zero: UInt8 = 0x30
 let nine: UInt8 = zero + 9
 
-private let maxLengthLength = 9
+/// The maximum number of bytes read when parsing length of incoming netstring.
+let maxLengthLength = 9
 
 /// `Netstring` reads and writes [netstrings](https://cr.yp.to/proto/netstrings.txt).
 /// A netstring is a self-delimiting encoding of a string of bytes that declares
@@ -73,6 +74,7 @@ public struct Netstring {
         var lengthBytes: [UInt8] = []
         while next.count == 1 && next[0] >= zero && next[0] <= nine {
             lengthBytes.append(next[0])
+            guard lengthBytes.count < maxLengthLength else { return .failure }
             next = reader(1)
         }
         guard next.count == 1, next.first == colon else { return .failure }

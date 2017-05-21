@@ -98,4 +98,19 @@ class ParseTests: XCTestCase {
         XCTAssertEqual(result, .failure)
         XCTAssertEqual(ar.read(20), "world,Z".byteArray)
     }
+
+    func testTooLongLength() {
+        let ar = ArrayReader(array: "1000000000:Hello world,Z".byteArray)
+        var hasReadColon = false
+        var position = 0
+        func reader(_ i: Int) -> [UInt8] {
+            position += i
+            if position > 9 { hasReadColon = true }
+            return ar.read(i)
+        }
+
+        let result = Netstring.parse(reader: reader, maxLength: nil)
+        XCTAssertEqual(result, .failure)
+        XCTAssertFalse(hasReadColon)
+    }
 }
