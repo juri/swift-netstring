@@ -15,6 +15,12 @@ let nine: UInt8 = zero + 9
 
 private let maxLengthLength = 9
 
+/// Netstring reads and writes [netstrings](https://cr.yp.to/proto/netstrings.txt).
+/// A netstring is a self-delimiting encoding of a string of bytes that declares
+/// its length at its beginning.
+///
+/// The predeclared length makes it easy to limit the the size of accepted data
+/// and to find the end of message without imposing escaping on the sender.
 public struct Netstring {
     public typealias Bytes = [UInt8]
     public typealias Reader = (Int) -> Bytes
