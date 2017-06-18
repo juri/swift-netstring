@@ -27,6 +27,8 @@ public struct Netstring {
     public enum ParseResult {
         /// A successfully parsed netstring.
         case success(Netstring)
+        /// No parsing was done because the reader returned zero bytes.
+        case streamEnded
         /// Parse failure caused by invalid format or missing data.
         case failure
         /// Parse failure caused by netstring length exceeding the specified maximum.
@@ -71,6 +73,9 @@ public struct Netstring {
     /// - Returns: ParseResult
     public static func parse(reader: @escaping ((Int) -> Bytes), maxLength: Int? = 10240, skipTooLong: Bool = true) -> ParseResult {
         var next: [UInt8] = reader(1)
+        guard next.count > 0 else {
+            return .streamEnded
+        }
         var lengthBytes: [UInt8] = []
         while next.count == 1 && next[0] >= zero && next[0] <= nine {
             lengthBytes.append(next[0])
@@ -147,11 +152,13 @@ extension Netstring.ParseResult: Equatable {
     public static func ==(lhs: Netstring.ParseResult, rhs: Netstring.ParseResult) -> Bool {
         switch (lhs, rhs) {
         case (.success(let lv), .success(let rv)): return lv == rv
+        case (.streamEnded, .streamEnded): return true
         case (.failure, .failure): return true
         case (.rejected(let lv), .rejected(let rv)): return lv == rv
         case (.success, _),
              (.failure, _),
-             (.rejected, _): return false
+             (.rejected, _),
+             (.streamEnded, _): return false
         }
     }
 }

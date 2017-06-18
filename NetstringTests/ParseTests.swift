@@ -113,4 +113,10 @@ class ParseTests: XCTestCase {
         XCTAssertEqual(result, .failure)
         XCTAssertFalse(hasReadColon)
     }
+
+    func testStreamEnd() {
+        let ar = ArrayReader(array: [])
+        let result = Netstring.parse(reader: ar.read, maxLength: nil)
+        XCTAssertEqual(result, .streamEnded)
+    }
 }
